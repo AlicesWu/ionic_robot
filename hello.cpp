@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    printf("Hello world");
+    printf("Hello world ubuntu 16");
     puts("Hello world");
     cout << "Hello world" << endl;
     return 0;
