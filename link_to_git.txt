@@ -1,4 +1,0 @@
-SSH:
-git@github.com:HanlinWei/ionic_robot.git
-HTTP:
-https://github.com/HanlinWei/ionic_robot.git
