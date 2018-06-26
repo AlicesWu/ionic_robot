@@ -27986,7 +27986,12 @@ ion-navbar.toolbar {
 
 page-data .EchartsDiv {
   width: 100%;
-  height: 100%;
+  height: 50%;
+}
+
+page-data .EchartsDiv2 {
+  width: 100%;
+  height: 50%;
 }
 
 page-tabs #tabsController {

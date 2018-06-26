@@ -1,15 +1,16 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      Data
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Data
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 <ion-content padding id="page3">
-  <button ion-button value="zuo" (select)="zuoxigai($event)">左膝盖</button>
-  <button ion-button color="danger" >右膝盖</button>
-  <div #EchartsContent class="EchartsDiv"></div>
+    <button ion-button color="danger" value="zuo" (click)="left_keel($event)">左膝盖</button>
+    <button ion-button value="you" (click)="right_keel($event)">右膝盖</button>
+    <div #EchartsContent class="EchartsDiv"></div>
+    <div #EchartsContent2 id="chart2" class="EchartsDiv"></div>
 </ion-content>

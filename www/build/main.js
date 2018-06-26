@@ -96,30 +96,119 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+var t = 1;
+var data = [];
+var value = Math.random() * 100;
+var myChart;
+var fd = [302, 302, 301];
+var zd = [120, 132, 101];
+var xd = [220, 182, 191];
+var gd = [150, 212, 201];
 var DataPage = /** @class */ (function () {
     function DataPage(navCtrl) {
         this.navCtrl = navCtrl;
+        t = 0;
+        data = [];
     }
     DataPage.prototype.ionViewDidEnter = function () {
         var _this = this;
-        var t = 1;
-        var data = [];
-        var value = Math.random() * 100;
+        myChart = echarts.init(document.getElementById('chart2'));
+        var optionchart = {
+            legend: {
+                data: ['腓部受力', '足部受力', '膝部受力', '股部受力']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value'
+            },
+            yAxis: {
+                type: 'category',
+                data: ['合计', '右侧', '左侧']
+            },
+            series: [
+                {
+                    name: '腓部受力',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                        }
+                    },
+                    data: fd
+                },
+                {
+                    name: '足部受力',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                        }
+                    },
+                    data: zd
+                },
+                {
+                    name: '膝部受力',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                        }
+                    },
+                    data: xd
+                },
+                {
+                    name: '股部受力',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                        }
+                    },
+                    data: gd
+                },
+            ]
+        };
+        myChart.setOption(optionchart);
+        t = 0;
+        data = [];
         var ctelement = this.container.nativeElement;
         this.EChart = echarts.init(ctelement);
         this.EChart.setOption({
-            title: {
-                text: '+'
-            },
             xAxis: {
                 type: 'value',
+                scale: 'false',
+                minInterval: 1,
+                min: function () {
+                    if (t > 12) {
+                        return t - 10;
+                    }
+                    else {
+                        return 2;
+                    }
+                },
+                max: function () {
+                    if (t > 12) {
+                        return t;
+                    }
+                    else {
+                        return 12;
+                    }
+                },
                 splitLine: {
                     show: true
                 }
             },
             yAxis: {
                 type: 'value',
-                boundaryGap: [0, '100%'],
                 splitLine: {
                     show: true
                 }
@@ -130,12 +219,19 @@ var DataPage = /** @class */ (function () {
                     showSymbol: true,
                     hoverAnimation: true,
                     data: data,
+                    markPoint: {
+                        data: [
+                            { type: 'max', name: '最大值' },
+                            { type: 'min', name: '最小值' }
+                        ]
+                    },
                     markLine: {
                         data: [
                             { type: 'average', name: '平均值' }
                         ]
                     },
-                    areaStyle: { normal: {
+                    areaStyle: {
+                        normal: {
                             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
                                     color: '#de3a38'
@@ -143,13 +239,14 @@ var DataPage = /** @class */ (function () {
                                     offset: 1,
                                     color: 'rgba(0,0,0,0)'
                                 }]),
-                        } }
+                        }
+                    }
                 }],
         });
         setInterval(function () {
-            // if (t >=20){
-            //     data.shift();
-            // }
+            if (t >= 12) {
+                data.shift();
+            }
             t += 1;
             data.push({ value: [t, Math.round(value + Math.random() * 21 + 10)] });
             _this.EChart.setOption({
@@ -157,19 +254,129 @@ var DataPage = /** @class */ (function () {
                         data: data
                     }]
             });
-        }, 1000);
+            fd[0] = fd[0] + 1;
+            myChart.setOption({
+                series: [
+                    {
+                        name: '腓部受力',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+                        },
+                        data: fd
+                    },
+                    {
+                        name: '足部受力',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+                        },
+                        data: zd
+                    },
+                    {
+                        name: '膝部受力',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+                        },
+                        data: xd
+                    },
+                    {
+                        name: '股部受力',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+                        },
+                        data: gd
+                    },
+                ]
+            });
+        }, 3000);
+    };
+    DataPage.prototype.left_keel = function (ev) {
+        t = 0;
+        data = [];
+        this.EChart.setOption({
+            series: [{
+                    data: data,
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#de3a38'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0,0,0,0)'
+                                }]),
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#de3a38',
+                            shadowBlur: 8,
+                            shadowColor: '#de3a38',
+                            borderColor: '#de3a38',
+                            borderWidth: 2,
+                            backgroundColor: 'transparent'
+                        }
+                    },
+                }]
+        });
+    };
+    DataPage.prototype.right_keel = function (ev) {
+        t = 0;
+        data = [];
+        this.EChart.setOption({
+            series: [{
+                    data: data,
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#00c1de'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0,0,0,0)'
+                                }]),
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#00c1de',
+                            shadowBlur: 8,
+                            shadowColor: '#25d5f0',
+                            borderColor: '#00c1de',
+                            borderWidth: 2,
+                            backgroundColor: 'transparent'
+                        }
+                    },
+                }]
+        });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('EchartsContent'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], DataPage.prototype, "container", void 0);
     DataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-data',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Data\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page3">\n  <button ion-button value="zuo" (select)="zuoxigai($event)">左膝盖</button>\n  <button ion-button color="danger" >右膝盖</button>\n  <div #EchartsContent class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/
+            selector: 'page-data',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            Data\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content padding id="page3">\n    <button ion-button color="danger" value="zuo" (click)="left_keel($event)">左膝盖</button>\n    <button ion-button value="you" (click)="right_keel($event)">右膝盖</button>\n    <div #EchartsContent class="EchartsDiv"></div>\n    <div #EchartsContent2 id="chart2" class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object])
     ], DataPage);
     return DataPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=data.js.map
@@ -237,7 +444,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>3D model</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <iframe src="../../assets/WebGLWalker.htm" width="100%" height="100%" scrolling="yes"></iframe>\n <!--<img src="../../assets/imgs/2XsXET5bSTiOM5E9mEBy_3D_oblique.png" style="display:block;width:13%;height:auto;margin-left:auto;margin-right:auto;" />-->\n</ion-content>\n'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>3D model</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <iframe src="http://47.106.73.43:5100/" width="100%" height="100%" scrolling="yes"></iframe>\n <!--<img src="../../assets/imgs/2XsXET5bSTiOM5E9mEBy_3D_oblique.png" style="display:block;width:13%;height:auto;margin-left:auto;margin-right:auto;" />-->\n</ion-content>\n'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], HomePage);
