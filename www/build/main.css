@@ -28001,6 +28001,12 @@ page-data .EchartsDiv {
   height: 100%;
 }
 
+page-node {
+  /*
+	.center{text-align:center;}
+	*/
+}
+
 page-tabs #tabsController {
   color: #4487FF;
   background-color: #5D3A23;
