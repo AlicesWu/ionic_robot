@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.ionic.starter"
     android:hardwareAccelerated="true"
-    android:versionCode="21"
+    android:versionCode="1"
     android:versionName="0.0.1" >
 
     <uses-sdk
