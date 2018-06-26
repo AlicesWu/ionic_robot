@@ -4,10 +4,25 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Node
+      记录
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page4">
-  <img src="../../assets/imgs/ONKOprSPOsAV00IQunwp_node.png" style="display:block;width:25%;height:auto;margin-left:auto;margin-right:auto;" />
+ <!--  <img src="../../assets/imgs/ONKOprSPOsAV00IQunwp_node.png" style="display:block;width:25%;height:auto;margin-left:auto;margin-right:auto;" /> -->
+ <!-- Segment buttons with icons -->
+  <ion-segment [(ngModel)]="icons" (ionChange)="node_change($event)">
+    <ion-segment-button value="diagnosis" (ionSelect)="select_diagnosis($event)">
+      <ion-icon name="diagnosis"></ion-icon>
+    </ion-segment-button>
+
+    <ion-segment-button value="activity" (ionSelect)="select_activity($event)">
+      <ion-icon name="activity"></ion-icon>
+    </ion-segment-button>
+
+    <ion-segment-button value="history" (ionSelect)="select_history($event)">
+      <ion-icon name="history"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
 </ion-content>
