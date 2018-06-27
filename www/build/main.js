@@ -100,10 +100,11 @@ var t = 1;
 var data = [];
 var value = Math.random() * 100;
 var myChart;
-var fd = [302, 302, 301];
-var zd = [120, 132, 101];
-var xd = [220, 182, 191];
-var gd = [150, 212, 201];
+var fd = [0, 0];
+var zd = [0, 0];
+var xd = [0, 0];
+var gd = [0, 0];
+var left = true;
 var DataPage = /** @class */ (function () {
     function DataPage(navCtrl) {
         this.navCtrl = navCtrl;
@@ -128,7 +129,7 @@ var DataPage = /** @class */ (function () {
             },
             yAxis: {
                 type: 'category',
-                data: ['合计', '右侧', '左侧']
+                data: ['右侧', '左侧']
             },
             series: [
                 {
@@ -248,13 +249,25 @@ var DataPage = /** @class */ (function () {
                 data.shift();
             }
             t += 1;
-            data.push({ value: [t, Math.round(value + Math.random() * 21 + 10)] });
+            fd[0] = Math.round(value + Math.random() * 110 + 100);
+            fd[1] = Math.round(value + Math.random() * 110 + 100);
+            zd[0] = Math.round(value + Math.random() * 110 + 100);
+            zd[1] = Math.round(value + Math.random() * 110 + 100);
+            xd[0] = Math.round(value + Math.random() * 110 + 100);
+            xd[1] = Math.round(value + Math.random() * 110 + 100);
+            gd[0] = Math.round(value + Math.random() * 110 + 100);
+            gd[1] = Math.round(value + Math.random() * 110 + 100);
+            if (left) {
+                data.push({ value: [t, fd[0] + zd[0] + xd[0] + gd[0]] });
+            }
+            else {
+                data.push({ value: [t, fd[1] + zd[1] + xd[1] + gd[1]] });
+            }
             _this.EChart.setOption({
                 series: [{
                         data: data
                     }]
             });
-            fd[0] = fd[0] + 1;
             myChart.setOption({
                 series: [
                     {
@@ -303,9 +316,10 @@ var DataPage = /** @class */ (function () {
                     },
                 ]
             });
-        }, 3000);
+        }, 1500);
     };
     DataPage.prototype.left_keel = function (ev) {
+        left = true;
         t = 0;
         data = [];
         this.EChart.setOption({
@@ -336,6 +350,7 @@ var DataPage = /** @class */ (function () {
         });
     };
     DataPage.prototype.right_keel = function (ev) {
+        left = false;
         t = 0;
         data = [];
         this.EChart.setOption({
@@ -371,7 +386,7 @@ var DataPage = /** @class */ (function () {
     ], DataPage.prototype, "container", void 0);
     DataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-data',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            Data\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content padding id="page3">\n    <button ion-button color="danger" value="zuo" (click)="left_keel($event)">左膝盖</button>\n    <button ion-button value="you" (click)="right_keel($event)">右膝盖</button>\n    <div #EchartsContent class="EchartsDiv"></div>\n    <div #EchartsContent2 id="chart2" class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/
+            selector: 'page-data',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            Data\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content align="center" padding id="page3">\n    <button style="width:45%" ion-button color="danger" value="zuo" (click)="left_keel($event)">左侧</button>\n    <button style="width:45%" ion-button value="you" (click)="right_keel($event)">右侧</button>\n    <div #EchartsContent class="EchartsDiv"></div>\n    <div #EchartsContent2 id="chart2" class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/
         }),
         __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object])
     ], DataPage);

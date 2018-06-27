@@ -7,10 +7,11 @@ let data = [];
 let value = Math.random() * 100;
 var myChart;
 
-var fd = [302, 302, 301];
-var zd = [120, 132, 101];
-var xd = [220, 182, 191];
-var gd = [150, 212, 201];
+var fd = [0, 0];
+var zd = [0, 0];
+var xd = [0, 0];
+var gd = [0, 0];
+var left = true;
 
 @Component({
     selector: 'page-data',
@@ -42,7 +43,7 @@ export class DataPage {
             },
             yAxis: {
                 type: 'category',
-                data: ['合计', '右侧', '左侧']
+                data: ['右侧', '左侧']
             },
             series: [
                 {
@@ -163,14 +164,30 @@ export class DataPage {
                 data.shift();
             }
             t += 1;
-            data.push({value: [t, Math.round(value + Math.random() * 21 + 10)]});
+
+            fd[0] = Math.round(value + Math.random() * 110 + 100);
+            fd[1] = Math.round(value + Math.random() * 110 + 100);
+            zd[0] = Math.round(value + Math.random() * 110 + 100);
+            zd[1] = Math.round(value + Math.random() * 110 + 100);
+            xd[0] = Math.round(value + Math.random() * 110 + 100);
+            xd[1] = Math.round(value + Math.random() * 110 + 100);
+            gd[0] = Math.round(value + Math.random() * 110 + 100);
+            gd[1] = Math.round(value + Math.random() * 110 + 100);
+
+            if (left){
+                data.push({value: [t, fd[0]+zd[0]+xd[0]+gd[0]]});
+            }else{
+                data.push({value: [t, fd[1]+zd[1]+xd[1]+gd[1]]});
+            }
+
+
+
             this.EChart.setOption({
                 series: [{
                     data: data
                 }]
             });
 
-            fd[0] = fd[0]+1;
             myChart.setOption({
                 series: [
                     {
@@ -220,10 +237,11 @@ export class DataPage {
                 ]
             });
 
-        }, 3000);
+        }, 1500);
     }
 
     left_keel(ev: any) {
+        left = true;
         t = 0;
         data = [];
         this.EChart.setOption({
@@ -255,6 +273,7 @@ export class DataPage {
     }
 
     right_keel(ev: any) {
+        left = false;
         t = 0;
         data = [];
         this.EChart.setOption({
