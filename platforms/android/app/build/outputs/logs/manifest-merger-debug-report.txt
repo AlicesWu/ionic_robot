@@ -9,19 +9,19 @@ INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/
 INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:1-14:12
 INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:1-14:12
 	package
-		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:99-125
+		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:98-124
 		INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:71-98
+		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:70-97
 		INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml
 	android:hardwareAccelerated
 		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:11-45
 	xmlns:android
-		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:126-184
+		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:125-183
 	android:versionCode
-		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:46-70
+		ADDED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml:2:46-69
 		INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/src/main/AndroidManifest.xml
 supports-screens
