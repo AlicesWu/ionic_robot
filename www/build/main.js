@@ -67,7 +67,7 @@ var TabsPage = /** @class */ (function () {
     }
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tabs',template:/*ion-inline-start:"/home/cat/webstormProject/ionic_robot/src/pages/tabs/tabs.html"*/'<ion-tabs id="tabsController" color="blue">\n  <ion-tab [root]="tab1Root" tabTitle="3DModel" tabIcon="walk" id="tabsController-tab1"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Data" tabIcon="stats" id="tabsController-tab2"></ion-tab>\n  <!-- <button ion-button icon-only>\n    <ion-icon name="myIcon"></ion-icon>\n  </button> -->\n  <!-- <ion-tab tabIcon="myIcon_play" id="tabsController-play"></ion-tab> -->\n  <ion-tab [root]="tab3Root" tabTitle="Node" tabIcon="body" id="tabsController-tab3"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Serial" tabIcon="bluetooth" id="tabsController-tab4"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/cat/webstormProject/ionic_robot/src/pages/tabs/tabs.html"*/
+            selector: 'page-tabs',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/tabs/tabs.html"*/'<ion-tabs id="tabsController" color="blue">\n  <ion-tab [root]="tab1Root" tabTitle="3DModel" tabIcon="walk" id="tabsController-tab1"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Data" tabIcon="stats" id="tabsController-tab2"></ion-tab>\n  <!-- <button ion-button icon-only>\n    <ion-icon name="myIcon"></ion-icon>\n  </button> -->\n  <!-- <ion-tab tabIcon="myIcon_play" id="tabsController-play"></ion-tab> -->\n  <ion-tab [root]="tab3Root" tabTitle="Node" tabIcon="body" id="tabsController-tab3"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Serial" tabIcon="bluetooth" id="tabsController-tab4"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/tabs/tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -96,62 +96,302 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+var t = 1;
+var data = [];
+var value = Math.random() * 100;
+var myChart;
+var fd = [0, 0];
+var zd = [0, 0];
+var xd = [0, 0];
+var gd = [0, 0];
+var left = true;
 var DataPage = /** @class */ (function () {
     function DataPage(navCtrl) {
         this.navCtrl = navCtrl;
+        t = 0;
+        data = [];
     }
     DataPage.prototype.ionViewDidEnter = function () {
         var _this = this;
-        var t = 1;
-        var data = [];
-        var value = Math.random() * 100;
+        myChart = echarts.init(document.getElementById('chart2'));
+        var optionchart = {
+            legend: {
+                data: ['腓部受力', '足部受力', '膝部受力', '股部受力']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value'
+            },
+            yAxis: {
+                type: 'category',
+                data: ['右侧', '左侧']
+            },
+            series: [
+                {
+                    name: '腓部受力',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                        }
+                    },
+                    data: fd
+                },
+                {
+                    name: '足部受力',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                        }
+                    },
+                    data: zd
+                },
+                {
+                    name: '膝部受力',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                        }
+                    },
+                    data: xd
+                },
+                {
+                    name: '股部受力',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                        }
+                    },
+                    data: gd
+                },
+            ]
+        };
+        myChart.setOption(optionchart);
+        t = 0;
+        data = [];
         var ctelement = this.container.nativeElement;
         this.EChart = echarts.init(ctelement);
         this.EChart.setOption({
-            title: {
-                text: '+'
-            },
             xAxis: {
                 type: 'value',
+                scale: 'false',
+                minInterval: 1,
+                min: function () {
+                    if (t > 12) {
+                        return t - 10;
+                    }
+                    else {
+                        return 2;
+                    }
+                },
+                max: function () {
+                    if (t > 12) {
+                        return t;
+                    }
+                    else {
+                        return 12;
+                    }
+                },
                 splitLine: {
-                    show: false
+                    show: true
                 }
             },
             yAxis: {
                 type: 'value',
-                boundaryGap: [0, '100%'],
                 splitLine: {
-                    show: false
+                    show: true
                 }
             },
             series: [{
                     type: 'line',
-                    showSymbol: false,
-                    hoverAnimation: false,
-                    data: data
-                }]
+                    label: { normal: { show: true } },
+                    showSymbol: true,
+                    hoverAnimation: true,
+                    data: data,
+                    markPoint: {
+                        data: [
+                            { type: 'max', name: '最大值' },
+                            { type: 'min', name: '最小值' }
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            { type: 'average', name: '平均值' }
+                        ]
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#de3a38'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0,0,0,0)'
+                                }]),
+                        }
+                    }
+                }],
         });
         setInterval(function () {
+            if (t >= 12) {
+                data.shift();
+            }
             t += 1;
-            data.push({ value: [t, Math.round(value + Math.random() * 21 + 10)] });
+            fd[0] = Math.round(value + Math.random() * 110 + 100);
+            fd[1] = Math.round(value + Math.random() * 110 + 100);
+            zd[0] = Math.round(value + Math.random() * 110 + 100);
+            zd[1] = Math.round(value + Math.random() * 110 + 100);
+            xd[0] = Math.round(value + Math.random() * 110 + 100);
+            xd[1] = Math.round(value + Math.random() * 110 + 100);
+            gd[0] = Math.round(value + Math.random() * 110 + 100);
+            gd[1] = Math.round(value + Math.random() * 110 + 100);
+            if (left) {
+                data.push({ value: [t, fd[0] + zd[0] + xd[0] + gd[0]] });
+            }
+            else {
+                data.push({ value: [t, fd[1] + zd[1] + xd[1] + gd[1]] });
+            }
             _this.EChart.setOption({
                 series: [{
                         data: data
                     }]
             });
-        }, 1000);
+            myChart.setOption({
+                series: [
+                    {
+                        name: '腓部受力',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+                        },
+                        data: fd
+                    },
+                    {
+                        name: '足部受力',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+                        },
+                        data: zd
+                    },
+                    {
+                        name: '膝部受力',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+                        },
+                        data: xd
+                    },
+                    {
+                        name: '股部受力',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                            }
+                        },
+                        data: gd
+                    },
+                ]
+            });
+        }, 1500);
+    };
+    DataPage.prototype.left_keel = function (ev) {
+        left = true;
+        t = 0;
+        data = [];
+        this.EChart.setOption({
+            series: [{
+                    data: data,
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#de3a38'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0,0,0,0)'
+                                }]),
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#de3a38',
+                            shadowBlur: 8,
+                            shadowColor: '#de3a38',
+                            borderColor: '#de3a38',
+                            borderWidth: 2,
+                            backgroundColor: 'transparent'
+                        }
+                    },
+                }]
+        });
+    };
+    DataPage.prototype.right_keel = function (ev) {
+        left = false;
+        t = 0;
+        data = [];
+        this.EChart.setOption({
+            series: [{
+                    data: data,
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#00c1de'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0,0,0,0)'
+                                }]),
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#00c1de',
+                            shadowBlur: 8,
+                            shadowColor: '#25d5f0',
+                            borderColor: '#00c1de',
+                            borderWidth: 2,
+                            backgroundColor: 'transparent'
+                        }
+                    },
+                }]
+        });
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('EchartsContent'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], DataPage.prototype, "container", void 0);
     DataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-data',template:/*ion-inline-start:"/home/cat/webstormProject/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Data\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page3">\n  <div #EchartsContent class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/ionic_robot/src/pages/data/data.html"*/
+            selector: 'page-data',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            Data\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content align="center" padding id="page3">\n    <button style="width:45%" ion-button color="danger" value="zuo" (click)="left_keel($event)">左侧</button>\n    <button style="width:45%" ion-button value="you" (click)="right_keel($event)">右侧</button>\n    <div #EchartsContent class="EchartsDiv"></div>\n    <div #EchartsContent2 id="chart2" class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/data/data.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object])
     ], DataPage);
     return DataPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=data.js.map
@@ -182,7 +422,7 @@ var NodePage = /** @class */ (function () {
     }
     NodePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-node',template:/*ion-inline-start:"/home/cat/webstormProject/ionic_robot/src/pages/node/node.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Node\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page4">\n  <img src="../../assets/imgs/ONKOprSPOsAV00IQunwp_node.png" style="display:block;width:25%;height:auto;margin-left:auto;margin-right:auto;" />\n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/ionic_robot/src/pages/node/node.html"*/
+            selector: 'page-node',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/node/node.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Node\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page4">\n  <img src="../../assets/imgs/ONKOprSPOsAV00IQunwp_node.png" style="display:block;width:25%;height:auto;margin-left:auto;margin-right:auto;" />\n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/node/node.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], NodePage);
@@ -219,7 +459,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/cat/webstormProject/ionic_robot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>3D model</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <iframe src="../../assets/WebGLWalker.htm" width="100%" height="100%" scrolling="yes"></iframe>\n <!--<img src="../../assets/imgs/2XsXET5bSTiOM5E9mEBy_3D_oblique.png" style="display:block;width:13%;height:auto;margin-left:auto;margin-right:auto;" />-->\n</ion-content>\n'/*ion-inline-end:"/home/cat/webstormProject/ionic_robot/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>3D model</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <iframe src="http://47.106.73.43:5100/" width="100%" height="100%" scrolling="yes"></iframe>\n <!--<img src="../../assets/imgs/2XsXET5bSTiOM5E9mEBy_3D_oblique.png" style="display:block;width:13%;height:auto;margin-left:auto;margin-right:auto;" />-->\n</ion-content>\n'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], HomePage);
@@ -254,7 +494,7 @@ var SerialPage = /** @class */ (function () {
     }
     SerialPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-serial',template:/*ion-inline-start:"/home/cat/webstormProject/ionic_robot/src/pages/serial/serial.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Serial-COM1\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page5">\n\n  <form id="serialCOM1-form11">\n    <ion-item id="serialCOM1-toggle3">\n      <ion-label>\n        Connect\n      </ion-label>\n      <ion-toggle color="primary" checked="true"></ion-toggle>\n    </ion-item>\n    <button ion-button round color="light" align="left">\n      <ion-icon name="myIcon_refresh"></ion-icon>\n    </button>\n\n    <button ion-button round color="light" align="left">\n      <ion-icon name="myIcon_play"></ion-icon>\n    </button>\n\n    <button ion-button round color="light" align="left">\n      <ion-icon name="myIcon_stop"></ion-icon>\n    </button>\n\n    <ion-item id="serialCOM1-input3">\n      <ion-label stacked>\n        Set_gather_time\n      </ion-label>\n      <ion-input type="number" placeholder=""></ion-input>\n    </ion-item>\n    <ion-item id="serialCOM1-input2">\n      <ion-label stacked>\n        Send\n      </ion-label>\n      <ion-input placeholder=""></ion-input>\n    </ion-item>\n\n    <button ion-button round color="blue" small>\n      Confirm\n    </button>\n  </form>\n  \n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/ionic_robot/src/pages/serial/serial.html"*/
+            selector: 'page-serial',template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/pages/serial/serial.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Serial-COM1\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page5">\n\n  <form id="serialCOM1-form11">\n    <ion-item id="serialCOM1-toggle3">\n      <ion-label>\n        Connect\n      </ion-label>\n      <ion-toggle color="primary" checked="true"></ion-toggle>\n    </ion-item>\n    <button ion-button round color="light" align="left">\n      <ion-icon name="myIcon_refresh"></ion-icon>\n    </button>\n\n    <button ion-button round color="light" align="left">\n      <ion-icon name="myIcon_play"></ion-icon>\n    </button>\n\n    <button ion-button round color="light" align="left">\n      <ion-icon name="myIcon_stop"></ion-icon>\n    </button>\n\n    <ion-item id="serialCOM1-input3">\n      <ion-label stacked>\n        Set_gather_time\n      </ion-label>\n      <ion-input type="number" placeholder=""></ion-input>\n    </ion-item>\n    <ion-item id="serialCOM1-input2">\n      <ion-label stacked>\n        Send\n      </ion-label>\n      <ion-input placeholder=""></ion-input>\n    </ion-item>\n\n    <button ion-button round color="blue" small>\n      Confirm\n    </button>\n  </form>\n  \n</ion-content>'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/pages/serial/serial.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], SerialPage);
@@ -389,7 +629,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/cat/webstormProject/ionic_robot/src/app/app.html"*/'\n<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/cat/webstormProject/ionic_robot/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/cat/webstormProject/testing/ionic_robot/src/app/app.html"*/'\n<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/cat/webstormProject/testing/ionic_robot/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
