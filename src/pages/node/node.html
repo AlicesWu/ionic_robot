@@ -3,15 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title text-center id="pagetitle" class="center">
+    <ion-title id="pagetitle" class="center">
       活动
     </ion-title>
   </ion-navbar>
 </ion-header>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <ion-content padding id="page4">
- <!--  <img src="../../assets/imgs/ONKOprSPOsAV00IQunwp_node.png" style="display:block;width:25%;height:auto;margin-left:auto;margin-right:auto;" /> -->
- <!-- Segment buttons with icons -->
+
  	<div padding>
 	  <ion-segment [(ngModel)]="tags" (ionChange)="node_change($event)">
 	    <ion-segment-button value="diagnosis" (ionSelect)="select_diagnosis($event)">
@@ -32,31 +31,58 @@
 	<div [ngSwitch]="tags">
 	  <ion-searchbar (ionInput)="search($event)" *ngSwitchCase="'diagnosis'"></ion-searchbar>
 	  <ion-list sliding *ngSwitchCase="'diagnosis'">
-	    <ion-item class="list-item">
-	      <h5>6月15日 17:15</h5>
+	    <ion-item class="list-item" [hidden]="hidden[0]" >
+	      <h5 class="time">6月15日 17:15</h5>
 	      <h6 class="discript">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>
 	    </ion-item>
-	    <ion-item class="list-item">
-	      <h5>6月8日 16:55</h5>
+	    <ion-item class="list-item" [hidden]="hidden[1]" >
+	      <h5 class="time">6月8日 16:55</h5>
 	      <h6 class="discript">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>
 	    </ion-item>
-	    <ion-item class="list-item">
-	      <h5>6月4日 15:34</h5>
+	    <ion-item class="list-item" [hidden]="hidden[2]" >
+	      <h5 class="time">6月4日 15:34</h5>
 	      <h6 class="discript">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>
 	    </ion-item>
-	  </ion-list>
-
-	  <ion-list *ngSwitchCase="'activity'">
-	    <ion-item>
-	      <h2>Luna</h2>
+	    <ion-item class="list-item" [hidden]="hidden[3]" >
+	      <h5 class="time">6月1日 16:55</h5>
+	      <h6 class="discript">交流障碍：言语治疗师进行评定和治疗。</h6>
+	    </ion-item>
+	    <ion-item class="list-item" [hidden]="hidden[4]" >
+	      <h5 class="time">5月25日 15:34</h5>
+	      <h6 class="discript"><br>反应性抑郁，缺乏家庭照顾：心理工作者及康复护士...</h6>
 	    </ion-item>
 	  </ion-list>
 
-	   <ion-list *ngSwitchCase="'history'">
-	    <ion-item>
-	      <h2>Luna</h2>
+	  <ion-list sliding *ngSwitchCase="'activity'">
+	    <ion-item class="list-item-activity" >
+	      <h5>6月15日 17:15</h5>
+	      <h6 class="discript-activity">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>
+	    </ion-item>
+	    <ion-item class="list-item-activity" >
+	      <h5>6月8日 16:55</h5>
+	      <h6 class="discript-activity">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>
+	    </ion-item>
+	    <ion-item class="list-item-activity" >
+	      <h5>6月4日 15:34</h5>
+	      <h6 class="discript-activity">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>
 	    </ion-item>
 	  </ion-list>
+
+	  <ion-list sliding *ngSwitchCase="'history'">
+	    <ion-item class="list-item-history" >
+	      <h5>6月15日 17:15</h5>
+	      <h6 class="discript-history">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>
+	    </ion-item>
+	    <ion-item class="list-item-history" >
+	      <h5>6月8日 16:55</h5>
+	      <h6 class="discript-history">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>
+	    </ion-item>
+	    <ion-item class="list-item-history" >
+	      <h5>6月4日 15:34</h5>
+	      <h6 class="discript-history">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>
+	    </ion-item>
+	  </ion-list>
+
 	</div>
 
 </ion-content>

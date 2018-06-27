@@ -7,7 +7,16 @@ import { NavController } from 'ionic-angular';
 })
 export class NodePage {
 
-	public hidden: boolean[];
+	public hidden;
+
+	ionViewDidEnter() {
+		this.hidden = new Array();
+		let item = document.getElementsByClassName("list-item");
+		for (var i=0; i<item.length; i++) {
+			this.hidden.push(false);
+		}
+		console.log("on start");
+	}
 
 	node_change(ev: any){
 	}
@@ -31,35 +40,53 @@ export class NodePage {
 
 	search(ev: any){
 	    let searchText = ev.target.value;
-	    // this.hidden.clear();
-	    // for (var i=0; i<3; i++)
-	    // 	this.hidden.push(false);
-
+	    
 	    // get the blocks of reports
 	    let item = document.getElementsByClassName("list-item");
-	    // let item = document.querySelectorAll(".list-item");
+
 	    // get the inner content of blocks
 	    let discript = document.getElementsByClassName("discript");
+	    let time = document.getElementsByClassName("time");
 
 	    var hightlight_ = '<span style="background:yellow;">';
     	var _hightlight = '</span>';
 
+    	// console.log("item length ", item.length);
+	    // for (var i=0; i<item.length; i++)
+	    // 	console.log("hidden[", i ,"]", this.hidden[i]);
+
 	    // delete current highlight
     	for (var i=0; i<item.length; i++) {
     		// able the all items
-    		item[i].style.display="inline";
-    		// item[i].visibility = "visible";
-    		// item[i].display="inline";
-    		// item[i].hide = true;
-    		// this.hidden[i] = false;
+    		// item[i].style.display="inline";
+
+    		this.hidden[i] = false;
+
     		var contents = discript[i].innerHTML;
     		var first_index = contents.indexOf(hightlight_);
-    		if (first_index==-1) { continue; }
-    		var pieces1 = contents.split(hightlight_);
-    		var pieces2 = pieces1[1].split(_hightlight);
-    		var arrayObj = new Array();
-    		arrayObj. push(pieces1[0], pieces2[0], pieces2[1]);
-    		discript[i].innerHTML = arrayObj.join('');
+    		if (first_index!=-1) {
+	    		var unhighlight = contents.split(hightlight_);
+	    		discript[i].innerHTML = unhighlight.join('');
+	    		var contents = discript[i].innerHTML;
+	    		var unhighlight = contents.split(_hightlight);
+	    		discript[i].innerHTML = unhighlight.join('');
+    		}
+
+    		var contents = time[i].innerHTML;
+    		var first_index = contents.indexOf(hightlight_);
+    		if (first_index!=-1) {
+	    		// var pieces1 = contents.split(hightlight_);
+	    		// var pieces2 = pieces1[1].split(_hightlight);
+	    		// var arrayObj = new Array();
+	    		// arrayObj. push(pieces1[0], pieces2[0], pieces2[1]);
+	    		// time[i].innerHTML = arrayObj.join('');
+
+	    		var unhighlight = contents.split(hightlight_);
+	    		time[i].innerHTML = unhighlight.join('');
+	    		var contents = time[i].innerHTML;
+	    		var unhighlight = contents.split(_hightlight);
+	    		time[i].innerHTML = unhighlight.join('');
+    		}
     	}
 
 	    if (searchText && searchText.trim() != '') {
@@ -69,21 +96,22 @@ export class NodePage {
 	    	for (var i=0; i<item.length; i++) {
 	    		var contents = discript[i].innerHTML;
 	    		var unhighlight = contents.split(searchText);
+	    		var time_contents = time[i].innerHTML;
+	    		var time_unhighlight = time_contents.split(searchText);
 	    		if (unhighlight.length>1) {
 	    			discript[i].innerHTML = unhighlight.join(hightlight_ + searchText + _hightlight);
 	    		}
-            	else {
+	    		if (time_unhighlight.length>1) {
+	    			time[i].innerHTML = time_unhighlight.join(hightlight_ + searchText + _hightlight);
+	    			console.log("time ", i);
+	    			console.log(time[i].innerHTML);
+	    		}
+
+            	if (unhighlight.length<=1 && time_unhighlight.length<=1) {
             		// disable the unmatched items
-            		item[i].style.display="none";
-            		// item[i].hide();
-            		// item[i].visibility = "hidden";
-            		// item[i].hide = true;
-            		// item[i].display="none";
-             		// if (this.hidden[i]) {
-				    //     this.hidden.splice(i, 1); // Remove the flag if the buttons are already hidden, so that they get displayed again.
-				    // } else {
-				    //     this.hidden[i] = true;
-				    // }
+            		// item[i].style.display="none";
+
+				    this.hidden[i] = true;
             	}
 	    	}
 	    }

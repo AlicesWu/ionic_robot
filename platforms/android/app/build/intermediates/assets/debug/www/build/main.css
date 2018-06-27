@@ -27998,7 +27998,28 @@ ion-navbar.toolbar {
 
 page-data .EchartsDiv {
   width: 100%;
-  height: 100%;
+  height: 50%;
+}
+
+page-data .EchartsDiv2 {
+  width: 100%;
+  height: 50%;
+}
+
+page-node {
+  /*
+	.center{text-align:center;}
+	*/
+}
+
+page-node .list-item {
+  -webkit-box-shadow: 0px 0px 2px 3px #000;
+  box-shadow: 0px 0px 2px 3px #000;
+  margin-top: 13px;
+}
+
+page-node ion-list {
+  padding: 50px;
 }
 
 page-tabs #tabsController {
