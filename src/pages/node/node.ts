@@ -29,27 +29,31 @@ export class NodePage {
 
 	search(ev: any){
 	    let searchText = ev.target.value;
+
+	    // get the blocks of reports
+	    let item = document.getElementsByClassName("list-item") as NodeListOf<HTMLElement>;
+	    // get the inner content of blocks
+	    let discript = document.getElementsByClassName("discript");
+
+	    var hightlight_ = '<span style="background:yellow;">';
+    	var _hightlight = '</span>';
+
+	    // delete current highlight
+    	for (var i=0; i<item.length; i++) {
+    		// able the all items
+    		item[i].style.display="inline";
+    		var contents = discript[i].innerHTML;
+    		var first_index = contents.indexOf(hightlight_);
+    		if (first_index==-1) { continue; }
+    		var pieces1 = contents.split(hightlight_);
+    		var pieces2 = pieces1[1].split(_hightlight);
+    		var arrayObj = new Array();
+    		arrayObj. push(pieces1[0], pieces2[0], pieces2[1]);
+    		discript[i].innerHTML = arrayObj.join('');
+    	}
+
 	    if (searchText && searchText.trim() != '') {
 	    	console.log(searchText);
-	    	var discript = document.getElementsByClassName("discript");
-	    	var item = document.getElementsByClassName("list-item");
-			console.log("item.length ",item.length);
-	    	var hightlight_ = '<span style="background:yellow;">';
-	    	var _hightlight = '</span>';
-
-	    	// delete current highlight
-	    	for (var i=0; i<item.length; i++) {
-	    		// able the all items
-	    		item[i].style.display="inline";
-	    		var contents = discript[i].innerHTML;
-	    		var first_index = contents.indexOf(hightlight_);
-	    		if (first_index==-1) { continue; }
-	    		var pieces1 = contents.split(hightlight_);
-	    		var pieces2 = pieces1[1].split(_hightlight);
-	    		var arrayObj = new Array();
-	    		arrayObj. push(pieces1[0], pieces2[0], pieces2[1]);
-	    		discript[i].innerHTML = arrayObj.join('');
-	    	}
 
 	    	// add highlight
 	    	for (var i=0; i<item.length; i++) {
