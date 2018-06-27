@@ -8,6 +8,7 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <ion-content padding id="page4">
  <!--  <img src="../../assets/imgs/ONKOprSPOsAV00IQunwp_node.png" style="display:block;width:25%;height:auto;margin-left:auto;margin-right:auto;" /> -->
  <!-- Segment buttons with icons -->
@@ -30,7 +31,7 @@
 	
 	<div [ngSwitch]="tags">
 	  <ion-searchbar (ionInput)="search($event)" *ngSwitchCase="'diagnosis'"></ion-searchbar>
-	  <ion-list *ngSwitchCase="'diagnosis'">
+	  <ion-list sliding *ngSwitchCase="'diagnosis'">
 	    <ion-item class="list-item">
 	      <h5>6月15日 17:15</h5>
 	      <h6 class="discript">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>

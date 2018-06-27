@@ -181,24 +181,85 @@ var NodePage = /** @class */ (function () {
         this.navCtrl = navCtrl;
     }
     NodePage.prototype.node_change = function (ev) {
-        alert("666");
     };
     NodePage.prototype.select_diagnosis = function (ev) {
-        alert("666");
+        var pagetitle = document.getElementById("pagetitle");
+        pagetitle.innerHTML = "病历";
     };
     NodePage.prototype.select_activity = function (ev) {
-        alert("777");
+        var pagetitle = document.getElementById("pagetitle");
+        //pagetitle.setAttribute("text-align", "center");
+        pagetitle.innerHTML = "活动";
+        //pagetitle.style.textAlign="center";
     };
     NodePage.prototype.select_history = function (ev) {
-        alert("888");
+        var pagetitle = document.getElementById("pagetitle");
+        pagetitle.innerHTML = "训练计划";
+    };
+    NodePage.prototype.search = function (ev) {
+        var searchText = ev.target.value;
+        // this.hidden.clear();
+        // for (var i=0; i<3; i++)
+        // 	this.hidden.push(false);
+        // get the blocks of reports
+        var item = document.getElementsByClassName("list-item");
+        // let item = document.querySelectorAll(".list-item");
+        // get the inner content of blocks
+        var discript = document.getElementsByClassName("discript");
+        var hightlight_ = '<span style="background:yellow;">';
+        var _hightlight = '</span>';
+        // delete current highlight
+        for (var i = 0; i < item.length; i++) {
+            // able the all items
+            item[i].style.display = "inline";
+            // item[i].visibility = "visible";
+            // item[i].display="inline";
+            // item[i].hide = true;
+            // this.hidden[i] = false;
+            var contents = discript[i].innerHTML;
+            var first_index = contents.indexOf(hightlight_);
+            if (first_index == -1) {
+                continue;
+            }
+            var pieces1 = contents.split(hightlight_);
+            var pieces2 = pieces1[1].split(_hightlight);
+            var arrayObj = new Array();
+            arrayObj.push(pieces1[0], pieces2[0], pieces2[1]);
+            discript[i].innerHTML = arrayObj.join('');
+        }
+        if (searchText && searchText.trim() != '') {
+            console.log(searchText);
+            // add highlight
+            for (var i = 0; i < item.length; i++) {
+                var contents = discript[i].innerHTML;
+                var unhighlight = contents.split(searchText);
+                if (unhighlight.length > 1) {
+                    discript[i].innerHTML = unhighlight.join(hightlight_ + searchText + _hightlight);
+                }
+                else {
+                    // disable the unmatched items
+                    item[i].style.display = "none";
+                    // item[i].hide();
+                    // item[i].visibility = "hidden";
+                    // item[i].hide = true;
+                    // item[i].display="none";
+                    // if (this.hidden[i]) {
+                    //     this.hidden.splice(i, 1); // Remove the flag if the buttons are already hidden, so that they get displayed again.
+                    // } else {
+                    //     this.hidden[i] = true;
+                    // }
+                }
+            }
+        }
     };
     NodePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-node',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/node/node.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title id="pagetitle" style="text-align: center;" class="center">\n      活动\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding id="page4">\n <!--  <img src="../../assets/imgs/ONKOprSPOsAV00IQunwp_node.png" style="display:block;width:25%;height:auto;margin-left:auto;margin-right:auto;" /> -->\n <!-- Segment buttons with icons -->\n 	<div padding>\n	  <ion-segment [(ngModel)]="tags" (ionChange)="node_change($event)">\n	    <ion-segment-button value="diagnosis" (ionSelect)="select_diagnosis($event)">\n	      <ion-icon name="diagnosis"></ion-icon>\n	    </ion-segment-button>\n\n	    <ion-segment-button value="activity" (ionSelect)="select_activity($event)">\n	      <ion-icon name="activity"></ion-icon>\n	    </ion-segment-button>\n\n	    <ion-segment-button value="history" (ionSelect)="select_history($event)">\n	      <ion-icon name="history"></ion-icon>\n	    </ion-segment-button>\n	  </ion-segment>\n	</div>\n\n	\n	<div [ngSwitch]="tags">\n	  <ion-searchbar (ionInput)="search($event)" *ngSwitchCase="\'diagnosis\'"></ion-searchbar>\n	  <ion-list *ngSwitchCase="\'diagnosis\'">\n	    <ion-item class="list-item">\n	      <h5>6月15日 17:15</h5>\n	      <h6 class="discript">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>\n	    </ion-item>\n	    <ion-item class="list-item">\n	      <h5>6月8日 16:55</h5>\n	      <h6 class="discript">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>\n	    </ion-item>\n	    <ion-item class="list-item">\n	      <h5>6月4日 15:34</h5>\n	      <h6 class="discript">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>\n	    </ion-item>\n	  </ion-list>\n\n	  <ion-list *ngSwitchCase="\'activity\'">\n	    <ion-item>\n	      <h2>Luna</h2>\n	    </ion-item>\n	  </ion-list>\n\n	   <ion-list *ngSwitchCase="\'history\'">\n	    <ion-item>\n	      <h2>Luna</h2>\n	    </ion-item>\n	  </ion-list>\n	</div>\n\n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/node/node.html"*/
+            selector: 'page-node',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/node/node.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title text-center id="pagetitle" class="center">\n      活动\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<script src="https://code.jquery.com/jquery-3.3.1.js"></script>\n<ion-content padding id="page4">\n <!--  <img src="../../assets/imgs/ONKOprSPOsAV00IQunwp_node.png" style="display:block;width:25%;height:auto;margin-left:auto;margin-right:auto;" /> -->\n <!-- Segment buttons with icons -->\n 	<div padding>\n	  <ion-segment [(ngModel)]="tags" (ionChange)="node_change($event)">\n	    <ion-segment-button value="diagnosis" (ionSelect)="select_diagnosis($event)">\n	      <ion-icon name="diagnosis"></ion-icon>\n	    </ion-segment-button>\n\n	    <ion-segment-button value="activity" (ionSelect)="select_activity($event)">\n	      <ion-icon name="activity"></ion-icon>\n	    </ion-segment-button>\n\n	    <ion-segment-button value="history" (ionSelect)="select_history($event)">\n	      <ion-icon name="history"></ion-icon>\n	    </ion-segment-button>\n	  </ion-segment>\n	</div>\n\n	\n	<div [ngSwitch]="tags">\n	  <ion-searchbar (ionInput)="search($event)" *ngSwitchCase="\'diagnosis\'"></ion-searchbar>\n	  <ion-list sliding *ngSwitchCase="\'diagnosis\'">\n	    <ion-item class="list-item">\n	      <h5>6月15日 17:15</h5>\n	      <h6 class="discript">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>\n	    </ion-item>\n	    <ion-item class="list-item">\n	      <h5>6月8日 16:55</h5>\n	      <h6 class="discript">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>\n	    </ion-item>\n	    <ion-item class="list-item">\n	      <h5>6月4日 15:34</h5>\n	      <h6 class="discript">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>\n	    </ion-item>\n	  </ion-list>\n\n	  <ion-list *ngSwitchCase="\'activity\'">\n	    <ion-item>\n	      <h2>Luna</h2>\n	    </ion-item>\n	  </ion-list>\n\n	   <ion-list *ngSwitchCase="\'history\'">\n	    <ion-item>\n	      <h2>Luna</h2>\n	    </ion-item>\n	  </ion-list>\n	</div>\n\n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/node/node.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
     ], NodePage);
     return NodePage;
+    var _a;
 }());
 
 //# sourceMappingURL=node.js.map

@@ -7,6 +7,8 @@ import { NavController } from 'ionic-angular';
 })
 export class NodePage {
 
+	public hidden: boolean[];
+
 	node_change(ev: any){
 	}
 
@@ -29,9 +31,13 @@ export class NodePage {
 
 	search(ev: any){
 	    let searchText = ev.target.value;
+	    // this.hidden.clear();
+	    // for (var i=0; i<3; i++)
+	    // 	this.hidden.push(false);
 
 	    // get the blocks of reports
-	    let item = document.getElementsByClassName("list-item") as NodeListOf<HTMLElement>;
+	    let item = document.getElementsByClassName("list-item");
+	    // let item = document.querySelectorAll(".list-item");
 	    // get the inner content of blocks
 	    let discript = document.getElementsByClassName("discript");
 
@@ -42,6 +48,10 @@ export class NodePage {
     	for (var i=0; i<item.length; i++) {
     		// able the all items
     		item[i].style.display="inline";
+    		// item[i].visibility = "visible";
+    		// item[i].display="inline";
+    		// item[i].hide = true;
+    		// this.hidden[i] = false;
     		var contents = discript[i].innerHTML;
     		var first_index = contents.indexOf(hightlight_);
     		if (first_index==-1) { continue; }
@@ -65,6 +75,15 @@ export class NodePage {
             	else {
             		// disable the unmatched items
             		item[i].style.display="none";
+            		// item[i].hide();
+            		// item[i].visibility = "hidden";
+            		// item[i].hide = true;
+            		// item[i].display="none";
+             		// if (this.hidden[i]) {
+				    //     this.hidden.splice(i, 1); // Remove the flag if the buttons are already hidden, so that they get displayed again.
+				    // } else {
+				    //     this.hidden[i] = true;
+				    // }
             	}
 	    	}
 	    }
