@@ -139,6 +139,7 @@ var DataPage = /** @class */ (function () {
                     label: {
                         normal: {
                             show: true,
+                            fontSize: 16,
                         }
                     },
                     data: fd
@@ -150,6 +151,7 @@ var DataPage = /** @class */ (function () {
                     label: {
                         normal: {
                             show: true,
+                            fontSize: 16,
                         }
                     },
                     data: zd
@@ -161,6 +163,7 @@ var DataPage = /** @class */ (function () {
                     label: {
                         normal: {
                             show: true,
+                            fontSize: 16,
                         }
                     },
                     data: xd
@@ -172,6 +175,7 @@ var DataPage = /** @class */ (function () {
                     label: {
                         normal: {
                             show: true,
+                            fontSize: 16,
                         }
                     },
                     data: gd
@@ -386,7 +390,7 @@ var DataPage = /** @class */ (function () {
     ], DataPage.prototype, "container", void 0);
     DataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-data',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            Data\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content align="center" padding id="page3">\n    <button style="width:45%" ion-button color="danger" value="zuo" (click)="left_keel($event)">左侧</button>\n    <button style="width:45%" ion-button value="you" (click)="right_keel($event)">右侧</button>\n    <div #EchartsContent class="EchartsDiv"></div>\n    <div #EchartsContent2 id="chart2" class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/data/data.html"*/
+            selector: 'page-data',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            数据\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content align="center" padding id="page3">\n    <button style="width:45%" ion-button color="danger" value="zuo" (click)="left_keel($event)">左侧</button>\n    <button style="width:45%" ion-button value="you" (click)="right_keel($event)">右侧</button>\n    <div #EchartsContent class="EchartsDiv"></div>\n    <div #EchartsContent2 id="chart2" class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/data/data.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], DataPage);
@@ -547,7 +551,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>3D model</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <iframe src="http://47.106.73.43:5100/" width="100%" height="100%" scrolling="yes"></iframe>\n <!--<img src="../../assets/imgs/2XsXET5bSTiOM5E9mEBy_3D_oblique.png" style="display:block;width:13%;height:auto;margin-left:auto;margin-right:auto;" />-->\n</ion-content>\n'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>3D模型</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <iframe src="http://47.106.73.43:5100/" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>\n <!--<img src="../../assets/imgs/2XsXET5bSTiOM5E9mEBy_3D_oblique.png" style="display:block;width:13%;height:auto;margin-left:auto;margin-right:auto;" />-->\n</ion-content>\n'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], HomePage);

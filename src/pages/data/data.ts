@@ -53,6 +53,7 @@ export class DataPage {
                     label: {
                         normal: {
                             show: true,
+                            fontSize: 16,
                         }
                     },
                     data: fd
@@ -64,6 +65,7 @@ export class DataPage {
                     label: {
                         normal: {
                             show: true,
+                            fontSize: 16,
                         }
                     },
                     data: zd
@@ -75,6 +77,7 @@ export class DataPage {
                     label: {
                         normal: {
                             show: true,
+                            fontSize: 16,
                         }
                     },
                     data: xd
@@ -86,6 +89,7 @@ export class DataPage {
                     label: {
                         normal: {
                             show: true,
+                            fontSize: 16,
                         }
                     },
                     data: gd
