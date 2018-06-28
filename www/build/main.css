@@ -43443,24 +43443,38 @@ page-node {
 }
 
 page-node .list-item {
-  -webkit-box-shadow: 10px 10px 5px #888888;
-  box-shadow: 10px 10px 5px #888888;
-  margin-top: 13px;
+  -webkit-box-shadow: 5px 5px 2px #888888;
+  box-shadow: 5px 5px 2px #888888;
+  margin-top: 10px;
 }
 
 page-node .list-item-activity {
-  -webkit-box-shadow: 10px 10px 5px #888888;
-  box-shadow: 10px 10px 5px #888888;
-  margin-top: 13px;
+  -webkit-box-shadow: 5px 5px 2px #888888;
+  box-shadow: 5px 5px 2px #888888;
+  margin-top: 10px;
 }
 
 page-node .list-item-history {
-  -webkit-box-shadow: 10px 10px 5px #888888;
-  box-shadow: 10px 10px 5px #888888;
-  margin-top: 13px;
+  -webkit-box-shadow: 5px 5px 2px #888888;
+  box-shadow: 5px 5px 2px #888888;
+  margin-top: 10px;
 }
 
 page-node ion-list {
+  padding: 20px;
+}
+
+page-serial #label {
+  float: left;
+  padding: 50px;
+}
+
+page-serial #button {
+  float: left;
+  margin-top: 50px;
+}
+
+page-serial ion-list {
   padding: 50px;
 }
 
