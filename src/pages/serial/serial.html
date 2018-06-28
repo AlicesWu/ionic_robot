@@ -11,15 +11,22 @@
 
 <ion-content padding id="page5">
 
-  <ion-label id="label" float=left>暂无设备连接</ion-label>
-  <button ion-button padding color="secondary" id="button">寻找设备</button>
-  <ion-fab center middle>
-   <button ion-fab>Button</button>
- </ion-fab>
-  <ion-list sliding padding>
-    <ion-item>
-      
-    </ion-item>
+  <button ion-button padding color="primary" id="label" float=left>暂无设备连接</button>
+  <button ion-button padding color="secondary" id="button" (click)="click_button($event)">寻找设备</button>
+  
+  <ion-list sliding padding >
+      <ion-item class="bluetooth-item" [hidden]="hidden0" (click)="click_item($event)">
+        iPhone
+      </ion-item>
+      <ion-item class="bluetooth-item" [hidden]="hidden0" (click)="click_item($event)">
+        Red Mi
+      </ion-item>
+      <ion-item class="bluetooth-item" [hidden]="hidden0" (click)="click_item($event)">
+        iPad
+      </ion-item>
+      <ion-item class="bluetooth-item" [hidden]="hidden0" (click)="click_item($event)">
+        55ER-973
+      </ion-item>
   </ion-list>
   
 </ion-content>

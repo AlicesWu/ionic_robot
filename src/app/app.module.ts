@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { BLE } from '@ionic-native/ble';
+
 import { DataPage } from '../pages/data/data';
 import { NodePage } from '../pages/node/node';
 import { HomePage } from '../pages/home/home';
@@ -37,6 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    BluetoothSerial,
+    BLE,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

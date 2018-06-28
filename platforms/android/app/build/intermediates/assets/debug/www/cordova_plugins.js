@@ -23,6 +23,14 @@ module.exports = [
     "clobbers": [
       "window.Keyboard"
     ]
+  },
+  {
+    "id": "cordova-plugin-ble-central.ble",
+    "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+    "pluginId": "cordova-plugin-ble-central",
+    "clobbers": [
+      "ble"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -32,7 +40,8 @@ module.exports.metadata =
   "cordova-plugin-device": "2.0.2",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-ionic-webview": "1.1.19",
-  "cordova-plugin-ionic-keyboard": "2.0.5"
+  "cordova-plugin-ionic-keyboard": "2.0.5",
+  "cordova-plugin-ble-central": "1.2.2"
 };
 // BOTTOM OF METADATA
 });

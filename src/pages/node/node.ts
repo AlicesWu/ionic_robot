@@ -8,6 +8,7 @@ import { NavController } from 'ionic-angular';
 export class NodePage {
 
 	public hidden;
+	public hide_word;
 
 	ionViewDidEnter() {
 		this.hidden = new Array();
@@ -23,19 +24,20 @@ export class NodePage {
 
 	select_diagnosis(ev: any){
 		var pagetitle = document.getElementById("pagetitle");
-		pagetitle.innerHTML = "病历";
+		pagetitle.innerHTML = '<font size="5">病历</font>';
+		this.hide_word = true;
 	}
 
 	select_activity(ev: any){
 		var pagetitle = document.getElementById("pagetitle");
-		//pagetitle.setAttribute("text-align", "center");
-		pagetitle.innerHTML = "活动";
-		//pagetitle.style.textAlign="center";
+		pagetitle.innerHTML = '<font size="5">活动</font>';
+		this.hide_word = true;
 	}
 
 	select_history(ev: any){
 		var pagetitle = document.getElementById("pagetitle");
-		pagetitle.innerHTML = "训练计划";
+		pagetitle.innerHTML = '<font size="5">训练计划</font>';
+		this.hide_word = true;
 	}
 
 	search(ev: any){

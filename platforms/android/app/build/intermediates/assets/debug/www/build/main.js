@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 108:
+/***/ 109:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,11 +13,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 108;
+webpackEmptyAsyncContext.id = 109;
 
 /***/ }),
 
-/***/ 149:
+/***/ 150:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -30,7 +30,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 149;
+webpackEmptyAsyncContext.id = 150;
 
 /***/ }),
 
@@ -84,7 +84,7 @@ var TabsPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -392,7 +392,7 @@ var DataPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-data',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/data/data.html"*/'<ion-header>\n    <ion-navbar>\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n            数据\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content align="center" padding id="page3">\n    <button style="width:45%" ion-button color="danger" value="zuo" (click)="left_keel($event)">左侧</button>\n    <button style="width:45%" ion-button value="you" (click)="right_keel($event)">右侧</button>\n    <div #EchartsContent class="EchartsDiv"></div>\n    <div #EchartsContent2 id="chart2" class="EchartsDiv"></div>\n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/data/data.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], DataPage);
     return DataPage;
 }());
@@ -407,7 +407,7 @@ var DataPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NodePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -435,17 +435,18 @@ var NodePage = /** @class */ (function () {
     };
     NodePage.prototype.select_diagnosis = function (ev) {
         var pagetitle = document.getElementById("pagetitle");
-        pagetitle.innerHTML = "病历";
+        pagetitle.innerHTML = '<font size="5">病历</font>';
+        this.hide_word = true;
     };
     NodePage.prototype.select_activity = function (ev) {
         var pagetitle = document.getElementById("pagetitle");
-        //pagetitle.setAttribute("text-align", "center");
-        pagetitle.innerHTML = "活动";
-        //pagetitle.style.textAlign="center";
+        pagetitle.innerHTML = '<font size="5">活动</font>';
+        this.hide_word = true;
     };
     NodePage.prototype.select_history = function (ev) {
         var pagetitle = document.getElementById("pagetitle");
-        pagetitle.innerHTML = "训练计划";
+        pagetitle.innerHTML = '<font size="5">训练计划</font>';
+        this.hide_word = true;
     };
     NodePage.prototype.search = function (ev) {
         var searchText = ev.target.value;
@@ -514,9 +515,9 @@ var NodePage = /** @class */ (function () {
     };
     NodePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-node',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/node/node.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title id="pagetitle" class="center">\n      活动\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<script src="https://code.jquery.com/jquery-3.3.1.js"></script>\n<ion-content padding id="page4">\n\n 	<div padding>\n	  <ion-segment [(ngModel)]="tags" (ionChange)="node_change($event)">\n	    <ion-segment-button value="diagnosis" (ionSelect)="select_diagnosis($event)">\n	      <ion-icon name="diagnosis"></ion-icon>\n	    </ion-segment-button>\n\n	    <ion-segment-button value="activity" (ionSelect)="select_activity($event)">\n	      <ion-icon name="activity"></ion-icon>\n	    </ion-segment-button>\n\n	    <ion-segment-button value="history" (ionSelect)="select_history($event)">\n	      <ion-icon name="history"></ion-icon>\n	    </ion-segment-button>\n	  </ion-segment>\n	</div>\n\n	\n	<div [ngSwitch]="tags">\n	  <ion-searchbar (ionInput)="search($event)" *ngSwitchCase="\'diagnosis\'"></ion-searchbar>\n	  <ion-list sliding *ngSwitchCase="\'diagnosis\'">\n	    <ion-item class="list-item" [hidden]="hidden[0]" color="item_0">\n	      <h5 class="time">6月15日 17:15</h5>\n	      <h6 class="discript">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>\n	    </ion-item>\n	    <ion-item class="list-item" [hidden]="hidden[1]"  color="item_1">\n	      <h5 class="time">6月8日 16:55</h5>\n	      <h6 class="discript">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>\n	    </ion-item>\n	    <ion-item class="list-item" [hidden]="hidden[2]"  color="item_2">\n	      <h5 class="time">6月4日 15:34</h5>\n	      <h6 class="discript">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>\n	    </ion-item>\n	    <ion-item class="list-item" [hidden]="hidden[3]"  color="item_3">\n	      <h5 class="time">6月1日 16:55</h5>\n	      <h6 class="discript">交流障碍：言语治疗师进行评定和治疗。</h6>\n	    </ion-item>\n	    <ion-item class="list-item" [hidden]="hidden[4]"  color="item_4">\n	      <h5 class="time">5月25日 15:34</h5>\n	      <h6 class="discript"><br>反应性抑郁，缺乏家庭照顾：心理工作者及康复护士...</h6>\n	    </ion-item>\n	  </ion-list>\n\n	  <ion-list sliding *ngSwitchCase="\'activity\'">\n	    <ion-item class="list-item-activity" color="item_0" >\n	      <ion-label>15:15<br>散步</ion-label>\n	      <ion-checkbox [(ngModel)]="a"></ion-checkbox>\n	    </ion-item>\n	    <ion-item class="list-item-activity" color="item_1" >\n	      <ion-label>16:55<br>腿部康复训练</ion-label>\n	      <ion-checkbox [(ngModel)]="b"></ion-checkbox>\n	    </ion-item>\n	    <ion-item class="list-item-activity" color="item_2" >\n	      <ion-label>17:34<br>放松训练</ion-label>\n	      <ion-checkbox [(ngModel)]="c"></ion-checkbox>\n	    </ion-item>\n	  </ion-list>\n\n	  <ion-list sliding *ngSwitchCase="\'history\'">\n	    <ion-item class="list-item-history" color="item_0" >\n	      <h5>7月5日 17:15</h5>\n	      <h6 class="discript-history">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>\n	    </ion-item>\n	    <ion-item class="list-item-history" color="item_1" >\n	      <h5>7月18日 16:55</h5>\n	      <h6 class="discript-history">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>\n	    </ion-item>\n	    <ion-item class="list-item-history" color="item_2" >\n	      <h5>7月21日 15:34</h5>\n	      <h6 class="discript-history">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>\n	    </ion-item>\n	  </ion-list>\n\n	</div>\n\n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/node/node.html"*/
+            selector: 'page-node',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/node/node.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title id="pagetitle" class="center">\n      活动\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<script src="https://code.jquery.com/jquery-3.3.1.js"></script>\n<ion-content padding id="page4">\n\n 	<div padding>\n	  <ion-segment [(ngModel)]="tags" (ionChange)="node_change($event)">\n	    <ion-segment-button value="diagnosis" (ionSelect)="select_diagnosis($event)">\n	      <ion-icon name="diagnosis"></ion-icon>\n	    </ion-segment-button>\n\n	    <ion-segment-button value="activity" (ionSelect)="select_activity($event)">\n	      <ion-icon name="activity"></ion-icon>\n	    </ion-segment-button>\n\n	    <ion-segment-button value="history" (ionSelect)="select_history($event)">\n	      <ion-icon name="history"></ion-icon>\n	    </ion-segment-button>\n	  </ion-segment>\n	</div>\n\n	<div id="lable" [hidden]="hide_word">\n		查看病历、活动、训练计划\n	</div>\n\n	<div [ngSwitch]="tags">\n	  <ion-searchbar (ionInput)="search($event)" *ngSwitchCase="\'diagnosis\'"></ion-searchbar>\n	  <ion-list sliding *ngSwitchCase="\'diagnosis\'">\n	    <ion-item class="list-item" [hidden]="hidden[0]" color="item_0">\n	      <h5 class="time">6月15日 17:15</h5>\n	      <h6 class="discript">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>\n	    </ion-item>\n	    <ion-item class="list-item" [hidden]="hidden[1]"  color="item_1">\n	      <h5 class="time">6月8日 16:55</h5>\n	      <h6 class="discript">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>\n	    </ion-item>\n	    <ion-item class="list-item" [hidden]="hidden[2]"  color="item_2">\n	      <h5 class="time">6月4日 15:34</h5>\n	      <h6 class="discript">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>\n	    </ion-item>\n	    <ion-item class="list-item" [hidden]="hidden[3]"  color="item_3">\n	      <h5 class="time">6月1日 16:55</h5>\n	      <h6 class="discript">交流障碍：言语治疗师进行评定和治疗。</h6>\n	    </ion-item>\n	    <ion-item class="list-item" [hidden]="hidden[4]"  color="item_4">\n	      <h5 class="time">5月25日 15:34</h5>\n	      <h6 class="discript"><br>反应性抑郁，缺乏家庭照顾：心理工作者及康复护士...</h6>\n	    </ion-item>\n	  </ion-list>\n\n	  <ion-list sliding *ngSwitchCase="\'activity\'">\n	    <ion-item class="list-item-activity" color="item_0" >\n	      <ion-label>15:15<br>散步</ion-label>\n	      <ion-checkbox [(ngModel)]="a"></ion-checkbox>\n	    </ion-item>\n	    <ion-item class="list-item-activity" color="item_1" >\n	      <ion-label>16:55<br>腿部康复训练</ion-label>\n	      <ion-checkbox [(ngModel)]="b"></ion-checkbox>\n	    </ion-item>\n	    <ion-item class="list-item-activity" color="item_2" >\n	      <ion-label>17:34<br>放松训练</ion-label>\n	      <ion-checkbox [(ngModel)]="c"></ion-checkbox>\n	    </ion-item>\n	  </ion-list>\n\n	  <ion-list sliding *ngSwitchCase="\'history\'">\n	    <ion-item class="list-item-history" color="item_0" >\n	      <h5>7月5日 17:15</h5>\n	      <h6 class="discript-history">运动功能障碍：物理治疗师进行运动治疗、下肢运动...</h6>\n	    </ion-item>\n	    <ion-item class="list-item-history" color="item_1" >\n	      <h5>7月18日 16:55</h5>\n	      <h6 class="discript-history">自我照顾障碍：作业治疗师进行上肢运动控制训练、...</h6>\n	    </ion-item>\n	    <ion-item class="list-item-history" color="item_2" >\n	      <h5>7月21日 15:34</h5>\n	      <h6 class="discript-history">左侧偏身忽略：作业治疗师可作感知测验和训练，经...</h6>\n	    </ion-item>\n	  </ion-list>\n\n	</div>\n\n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/node/node.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], NodePage);
     return NodePage;
 }());
@@ -531,7 +532,7 @@ var NodePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -551,9 +552,9 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>3D模型</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <iframe src="http://47.106.73.43:5100/" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>\n <!--<img src="../../assets/imgs/2XsXET5bSTiOM5E9mEBy_3D_oblique.png" style="display:block;width:13%;height:auto;margin-left:auto;margin-right:auto;" />-->\n</ion-content>\n'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>3D模型</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <iframe src="http://47.106.73.43:5100/" width="100%" height="100%" scrolling="yes" frameborder="0"></iframe>\n <!--<img src="../../assets/imgs/2XsXET5bSTiOM5E9mEBy_3D_oblique.png" style="display:block;width:13%;height:auto;margin-left:auto;margin-right:auto;" />-->\n</ion-content>\n'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], HomePage);
     return HomePage;
 }());
@@ -568,7 +569,7 @@ var HomePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SerialPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -580,15 +581,94 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+// import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+// import { BLE } from '@ionic-native/ble';
 var SerialPage = /** @class */ (function () {
-    function SerialPage(navCtrl) {
+    function SerialPage(navCtrl, loadingCtrl) {
         this.navCtrl = navCtrl;
+        this.loadingCtrl = loadingCtrl;
     }
+    SerialPage.prototype.ionViewDidEnter = function () {
+        this.hidden = new Array();
+        var item = document.getElementsByClassName("bluetooth-item");
+        for (var i = 0; i < item.length; i++) {
+            this.hidden.push(true);
+        }
+        this.hidden0 = true;
+        this.blue_ed = true;
+        console.log("on start");
+    };
+    SerialPage.prototype.click_button = function (ev) {
+        function sleep(numberMillis) {
+            var now = new Date();
+            var exitTime = now.getTime() + numberMillis;
+            while (true) {
+                now = new Date();
+                if (now.getTime() > exitTime)
+                    return;
+            }
+        }
+        ;
+        // function presentLoadingDefault() {
+        //        let loading = this.loadingCtrl.create({
+        //            content: 'Please wait...'//数据加载中显示
+        //        });
+        //        loading.present();
+        //        setTimeout(() => {
+        //            loading.dismiss();//显示多久消失
+        //        }, 3000);
+        //    };
+        var hightlight_ = '<font color="blue">';
+        var _hightlight = '</font>';
+        var item = document.getElementsByClassName("bluetooth-item");
+        var button = document.getElementById("button");
+        if (button.innerHTML == '寻找设备') {
+            console.log("xun");
+            // sleep(2300);
+            for (var i = 0; i < item.length; i++) {
+                this.hidden[i] = Math.random() >= 0.5;
+            }
+            this.hidden0 = true;
+            // presentLoadingDefault();
+            // sleep(2300);
+            this.hidden0 = false;
+        }
+        else {
+            console.log("333");
+            button.innerHTML = '寻找设备';
+            var label = document.getElementById("label");
+            label.innerHTML = '暂无设备连接';
+            for (var i = 0; i < item.length; i++) {
+                var contents = item[i].innerHTML;
+                var first_index = contents.indexOf(hightlight_);
+                if (first_index != -1) {
+                    var unhighlight = contents.split(hightlight_);
+                    item[i].innerHTML = unhighlight.join('');
+                    var contents = item[i].innerHTML;
+                    var unhighlight = contents.split(_hightlight);
+                    item[i].innerHTML = unhighlight.join('');
+                }
+            }
+            this.blue_ed = true;
+        }
+    };
+    SerialPage.prototype.click_item = function (ev) {
+        if (this.blue_ed) {
+            var button = document.getElementById("button");
+            var label = document.getElementById("label");
+            label.innerHTML = ev.target.innerHTML;
+            button.innerHTML = '断开连接';
+            var content = ev.target.innerHTML;
+            ev.target.innerHTML = '<font color="blue">' + content + '</font>';
+            this.blue_ed = false;
+        }
+    };
     SerialPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-serial',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/serial/serial.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      蓝牙连接\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page5">\n\n  <ion-label id="label" float=left>暂无设备连接</ion-label>\n  <button ion-button padding color="secondary" id="button">寻找设备</button>\n  <ion-fab center middle>\n   <button ion-fab>Button</button>\n </ion-fab>\n  <ion-list sliding padding>\n    <ion-item>\n      \n    </ion-item>\n  </ion-list>\n  \n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/serial/serial.html"*/
+            selector: 'page-serial',template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/serial/serial.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      蓝牙连接\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding id="page5">\n\n  <button ion-button padding color="primary" id="label" float=left>暂无设备连接</button>\n  <button ion-button padding color="secondary" id="button" (click)="click_button($event)">寻找设备</button>\n  \n  <ion-list sliding padding >\n      <ion-item class="bluetooth-item" [hidden]="hidden0" (click)="click_item($event)">\n        iPhone\n      </ion-item>\n      <ion-item class="bluetooth-item" [hidden]="hidden0" (click)="click_item($event)">\n        Red Mi\n      </ion-item>\n      <ion-item class="bluetooth-item" [hidden]="hidden0" (click)="click_item($event)">\n        iPad\n      </ion-item>\n      <ion-item class="bluetooth-item" [hidden]="hidden0" (click)="click_item($event)">\n        55ER-973\n      </ion-item>\n  </ion-list>\n  \n</ion-content>'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/pages/serial/serial.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* LoadingController */]])
     ], SerialPage);
     return SerialPage;
 }());
@@ -617,22 +697,26 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_data_data__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_node_node__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_serial_serial__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_bluetooth_serial__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_ble__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_data_data__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_node_node__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_serial_serial__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(192);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -651,11 +735,11 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_4__pages_data_data__["a" /* DataPage */],
-                __WEBPACK_IMPORTED_MODULE_5__pages_node_node__["a" /* NodePage */],
-                __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_serial_serial__["a" /* SerialPage */],
-                __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__["a" /* TabsPage */]
+                __WEBPACK_IMPORTED_MODULE_6__pages_data_data__["a" /* DataPage */],
+                __WEBPACK_IMPORTED_MODULE_7__pages_node_node__["a" /* NodePage */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_serial_serial__["a" /* SerialPage */],
+                __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__["a" /* TabsPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -666,15 +750,17 @@ var AppModule = /** @class */ (function () {
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_4__pages_data_data__["a" /* DataPage */],
-                __WEBPACK_IMPORTED_MODULE_5__pages_node_node__["a" /* NodePage */],
-                __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_serial_serial__["a" /* SerialPage */],
-                __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__["a" /* TabsPage */]
+                __WEBPACK_IMPORTED_MODULE_6__pages_data_data__["a" /* DataPage */],
+                __WEBPACK_IMPORTED_MODULE_7__pages_node_node__["a" /* NodePage */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_serial_serial__["a" /* SerialPage */],
+                __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__["a" /* TabsPage */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_4__ionic_native_bluetooth_serial__["a" /* BluetoothSerial */],
+                __WEBPACK_IMPORTED_MODULE_5__ionic_native_ble__["a" /* BLE */],
                 { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] }
             ]
         })
@@ -692,8 +778,8 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(193);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -723,7 +809,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/weihanlin/Documents/ionic/ionic_robot/src/app/app.html"*/'\n<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/weihanlin/Documents/ionic/ionic_robot/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());

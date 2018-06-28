@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jun 27 22:29:42 HKT 2018
+#Thu Jun 28 15:07:40 HKT 2018
 60.set=ASSET
 52.set=ASSET
 53.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/res/debug/resources-debug.ap_
@@ -71,6 +71,7 @@
 75.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug
 41.set=ASSET
 33.set=ASSET
+104.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/plugins/cordova-plugin-ble-central/www/ble.js
 25.set=ASSET
 17.set=ASSET
 95.set=ASSET
@@ -106,6 +107,7 @@
 90.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex
 6.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/build/sw-toolbox.js
 97.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/assets/fonts/roboto-bold.ttf
+104.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug
 5.set=ASSET
 50.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/assets/fonts/noto-sans-regular.ttf
 57.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/assets/fonts/roboto-bold.woff2
@@ -201,7 +203,7 @@
 18.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug
 55.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/service-worker.js
 65.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/res/debug/resources-debug.ap_
-count=104
+count=105
 15.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/assets/WebGL Walker_files/logo.png
 25.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug
 72.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug
@@ -242,6 +244,7 @@ count=104
 47.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/build/vendor.js.map
 94.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/res/debug/resources-debug.ap_/res/drawable-port-hdpi-v4/screen.png
 101.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug
+104.set=ASSET
 17.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug
 54.file=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug/www/plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js
 64.base=/home/weihanlin/Documents/ionic/ionic_robot/platforms/android/app/build/intermediates/assets/debug

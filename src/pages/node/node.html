@@ -27,7 +27,10 @@
 	  </ion-segment>
 	</div>
 
-	
+	<div id="lable" [hidden]="hide_word">
+		查看病历、活动、训练计划
+	</div>
+
 	<div [ngSwitch]="tags">
 	  <ion-searchbar (ionInput)="search($event)" *ngSwitchCase="'diagnosis'"></ion-searchbar>
 	  <ion-list sliding *ngSwitchCase="'diagnosis'">
